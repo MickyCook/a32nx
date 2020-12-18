@@ -55,8 +55,8 @@ class A32NX_GPWS {
     gpws(deltaTime) {
         const radioAlt = SimVar.GetSimVarValue("PLANE ALT ABOVE GROUND MINUS CG", "Feet");
         const onGround = SimVar.GetSimVarValue("SIM ON GROUND", "Bool");
-        console.log('A32NX_GPWS init');
-        this.UpdateAltState(radioAlt, deltaTime);
+        console.log(radioAlt, deltaTime);
+        this.UpdateAltState(radioAlt);
         this.differentiate_radioalt(radioAlt, deltaTime);
 
         const mda = SimVar.GetSimVarValue("L:AIRLINER_MINIMUM_DESCENT_ALTITUDE", "feet");
