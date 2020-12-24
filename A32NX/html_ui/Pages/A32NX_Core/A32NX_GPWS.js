@@ -55,7 +55,6 @@ class A32NX_GPWS {
     gpws(deltaTime) {
         const radioAlt = SimVar.GetSimVarValue("PLANE ALT ABOVE GROUND MINUS CG", "Feet");
         const onGround = SimVar.GetSimVarValue("SIM ON GROUND", "Bool");
-        console.log(radioAlt, deltaTime);
         this.UpdateAltState(radioAlt);
         this.differentiate_radioalt(radioAlt, deltaTime);
 
@@ -451,6 +450,7 @@ class A32NX_GPWS {
     }
 
     UpdateAltState(radioAlt) {
+        console.log(this.AltCallStat);
         switch (this.AltCallState.value) {
             case "ground":
                 if (radioAlt > 5) {
@@ -542,6 +542,7 @@ class A32NX_GPWS {
                 }
                 break;
             case "over500":
+                console.log(this.AltCallStat);
                 if (radioAlt > 1000) {
                     this.AltCallState.action("up");
                 } else if (radioAlt <= 500) {
